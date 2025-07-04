@@ -8,14 +8,34 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    environment: development-env  # links this job to the environment
 
     steps:
-      - name: Checkout Code
+      - name: Checkout Repository
         uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Run HTMLHint
+        run: |
+          if ls **/*.html 1> /dev/null 2>&1; then
+            npx htmlhint **/*.html
+          else
+            echo "No HTML files found. Skipping HTMLHint."
+          fi
+
+      - name: Run Stylelint
+        run: |
+          if ls **/*.css 1> /dev/null 2>&1; then
+            npx stylelint "**/*.css"
+          else
+            echo "No CSS files found. Skipping Stylelint."
+          fi
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./  # or wherever your HTML files are
+          publish_dir: .
