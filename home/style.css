@@ -26,6 +26,40 @@ nav a {
   color: white;
   text-decoration: none;
   font-weight: bold;
+  position: relative;
+  padding: 0.3rem 0;
+  transition: color 0.3s ease;
+}
+
+/* Hover effect */
+nav a:hover,
+nav a:focus {
+  color: #ffd166;
+}
+
+/* Active state */
+nav a:active {
+  color: #ffe066;
+}
+
+/* Optional: Underline effect on hover using ::after */
+nav a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 100%;
+  height: 2px;
+  background-color: #ffd166;
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+  transform-origin: right;
+}
+
+nav a:hover::after,
+nav a:focus::after {
+  transform: scaleX(1);
+  transform-origin: left;
 }
 
 .intro, .featured, .reviews {
