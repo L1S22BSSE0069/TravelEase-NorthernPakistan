@@ -1,0 +1,17 @@
+name: CD Release
+
+on:
+  push:
+    branches:
+      - release/v1.0
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Deploy to Staging Environment
+        run: echo "Simulating deployment to staging environment"
