@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact Us | TravelEase</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>Contact TravelEase</h1>
+    <nav>
+      <ul>
+       <li><a href="../home/index.html">Home</a></li>
+    <li><a href="index.html">Contact</a></li>
+    <li><a href="../destinations/index.html">Destinations</a></li>
+    <li><a href="../trip-planner/index.html">Trip Planner</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="contact-info">
+    <h2>Our Office</h2>
+    <p>Email: <a href="mailto:info@travelease.pk">info@travelease.pk</a></p>
+    <p>WhatsApp: +92 300 1234567</p>
+    <p>Address: Main Street, Gilgit City, Gilgit-Baltistan</p>
+    <p>Office Hours: Mon–Fri, 9:00 AM – 5:00 PM</p>
+    <div class="social-links">
+      <a href="#">Facebook</a> |
+      <a href="#">Instagram</a> |
+      <a href="#">YouTube</a>
+    </div>
+  </section>
+
+  <section class="contact-form">
+    <h2>Send Us a Message</h2>
+    <form id="contactForm" onsubmit="return validateForm()">
+      <input type="text" name="name" id="name" placeholder="Your Name" required />
+      <input type="email" name="email" id="email" placeholder="Your Email" required />
+      <input type="text" name="subject" id="subject" placeholder="Subject" required />
+      <textarea name="message" id="message" rows="5" placeholder="Your Message" required></textarea>
+      <button type="submit">Send</button>
+    </form>
+  </section>
+
+  <section class="map">
+    <h2>Our Location</h2>
+    <img src="images/map-gilgit.jpg" alt="Map of Gilgit Office Location" />
+  </section>
+
+  <footer>
+    <p>&copy; 2025 TravelEase. All rights reserved.</p>
+  </footer>
+
+  <script>
+    function validateForm() {
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const subject = document.getElementById('subject').value.trim();
+      const message = document.getElementById('message').value.trim();
+
+      if (!name || !email || !subject || !message) {
+        alert("Please fill in all fields.");
+        return false;
+      }
+
+      const emailRegex = /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/;
+      if (!emailRegex.test(email)) {
+        alert("Please enter a valid email address.");
+        return false;
+      }
+
+      return true;
+    }
+  </script>
+</body>
+</html>
