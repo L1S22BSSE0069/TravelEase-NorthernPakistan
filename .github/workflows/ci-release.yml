@@ -1,0 +1,38 @@
+name: CI Release
+
+on:
+  pull_request:
+    branches:
+      - release
+
+jobs:
+  lint-and-build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Run HTMLHint
+        run: |
+          if ls **/*.html 1> /dev/null 2>&1; then
+            npx htmlhint "**/*.html"
+          else
+            echo "No HTML files found. Skipping HTMLHint."
+          fi
+
+      - name: Run Stylelint
+        run: |
+          if ls **/*.css 1> /dev/null 2>&1; then
+            npx stylelint "**/*.css"
+          else
+            echo "No CSS files found. Skipping Stylelint."
+          fi
