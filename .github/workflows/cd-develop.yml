@@ -34,8 +34,11 @@ jobs:
             echo "No CSS files found. Skipping Stylelint."
           fi
 
-      - name: Deploy to GitHub Pages
+      - name: Deploy to GitHub Pages (Development)
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: .
+          publish_dir: ./home
+          publish_branch: gh-pages
+          user_name: github-actions
+          user_email: github-actions@github.com
