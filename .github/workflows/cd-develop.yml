@@ -8,10 +8,14 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    environment: development-env  # links this job to the environment
 
     steps:
       - name: Checkout Code
         uses: actions/checkout@v3
 
-      - name: Deploy to GitHub Pages (Development)
-        run: echo "Simulating deployment to development environment"
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./  # or wherever your HTML files are
