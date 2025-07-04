@@ -54,6 +54,34 @@ main {
   margin-bottom: 0.5rem;
 }
 
+.destination p {
+  font-size: 1rem;
+  color: #333;
+  margin-bottom: 0.5rem;
+  line-height: 1.6;
+}
+
+.destination ul {
+  padding-left: 1.2rem;
+  margin: 0;
+}
+
+.destination li {
+  margin-bottom: 0.4rem;
+  padding-left: 0.5rem;
+  position: relative;
+  color: #555;
+}
+
+.destination li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: #006d77;
+  font-size: 1.2rem;
+  top: 0;
+}
+
 footer {
   background-color: #006d77;
   color: white;
